@@ -1,53 +1,45 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_largest_square.c                               :+:      :+:    :+:   */
+/*   ft_display_map.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eng-telur4 <eng-telur4@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/24 23:22:50 by skamijo           #+#    #+#             */
-/*   Updated: 2024/09/25 02:33:08 by eng-telur4       ###   ########.fr       */
+/*   Created: 2024/09/25 02:37:19 by eng-telur4        #+#    #+#             */
+/*   Updated: 2024/09/25 02:37:52 by eng-telur4       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "declaration.h"
 
-int	get_largest_square(int h, int w, int **g_g, int **g_dp)
+void	display_map(t_map_info *map_info, char **map)
 {
-	int	max_width;
+	int	i;
+
+	i = 0;
+	while (i < map_info->rows)
+	{
+		ft_putstr(map[i]);
+		ft_putstr("\n");
+		i++;
+	}
+}
+
+void	display_map_n(t_map_info *map_info, int **map)
+{
 	int	i;
 	int	j;
 
-	max_width = 0;
 	i = 0;
-	while (i < h)
+	while (i < map_info->rows)
 	{
 		j = 0;
-		while (j < w)
+		while (map[i][j] != -1)
 		{
-			g_dp[i][j] = (g_g[i][j] + 1) % 2;
-			max_width |= g_dp[i][j];
+			ft_putnbr(map[i][j]);
 			j++;
 		}
+		ft_putstr("\n");
 		i++;
 	}
-	i = 1;
-	while (i < h)
-	{
-		j = 1;
-		while (j < w)
-		{
-			if (g_g[i][j])
-				g_dp[i][j] = 0;
-			else
-			{
-				g_dp[i][j] = min(g_dp[i - 1][j - 1], min(g_dp[i - 1][j],
-							g_dp[i][j - 1])) + 1;
-				max_width = max(max_width, g_dp[i][j]);
-			}
-			j++;
-		}
-		i++;
-	}
-	return (max_width);
 }

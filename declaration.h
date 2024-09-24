@@ -6,7 +6,7 @@
 /*   By: eng-telur4 <eng-telur4@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 16:41:48 by skamijo           #+#    #+#             */
-/*   Updated: 2024/09/25 02:26:29 by eng-telur4       ###   ########.fr       */
+/*   Updated: 2024/09/25 03:05:37 by eng-telur4       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,19 @@ typedef enum e_bool
 	TRUE
 }			t_bool;
 
+// 2次元情報型
+typedef struct s_point_2d
+{
+	int		x;
+	int		y;
+}			t_point_2d;
+
 // ft_file_io.c
 char		*read_file(char *file_name);
 int			get_file_size(char *file_name);
 char		**read_lines(char *buf);
 // int			get_line_count(char *buf);
-// int			get_line_countl(char **lines);
+int			get_line_countl(char **lines);
 
 // ft_putstr.c
 void		ft_putstr(char *str);
@@ -75,18 +82,22 @@ int			ft_atoi(char *str);
 // ft_str_is_printable.c
 int			ft_str_is_printable(char *str);
 
-// map.c
+// ft_create_map.c
 t_map_info	*create_map_info(char *line);
 char		**create_map(char **lines, int row_len);
 int			**create_map_n(char **lines, t_map_info *map_info);
+void		init_map(char **lines, char **map);
+void		init_map_n(char **lines, int **map_n, t_map_info *map_info);
+
+// ft_display_map.c
 void		display_map(t_map_info *map_info, char **map);
 void		display_map_n(t_map_info *map_info, int **map);
 
 // ft_strcpy.c
 char		*ft_strcpy(char *dest, char *src);
 
-// get_largest_square.c
-int			get_largest_square(int h, int w, int **g_g, int **g_dp);
+// ft_calc_max_square.c
+int			ft_calc_max_square(int h, int w, int **g_g, int **g_dp);
 
 // ft_min_max.c
 int			min(int a, int b);

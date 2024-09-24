@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_map.c                                           :+:      :+:    :+:   */
+/*   ft_create_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: eng-telur4 <eng-telur4@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 23:08:54 by skamijo           #+#    #+#             */
-/*   Updated: 2024/09/25 02:32:31 by eng-telur4       ###   ########.fr       */
+/*   Updated: 2024/09/25 02:44:05 by eng-telur4       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,11 +52,22 @@ char	**create_map(char **lines, int row_len)
 			free_2d_array_en_route((void **)ret_val, i);
 			return (NULL);
 		}
-		ft_strcpy(ret_val[i], lines[i + 1]);
 		i++;
 	}
 	ret_val[i] = NULL;
 	return (ret_val);
+}
+
+void	init_map(char **lines, char **map)
+{
+	int	i;
+
+	i = 0;
+	while (map[i] != NULL)
+	{
+		ft_strcpy(map[i], lines[i + 1]);
+		i++;
+	}
 }
 
 int	**create_map_n(char **lines, t_map_info *map_info)
@@ -79,50 +90,30 @@ int	**create_map_n(char **lines, t_map_info *map_info)
 			free_2d_array_en_route((void **)ret_val, i);
 			return (NULL);
 		}
-		j = 0;
-		while (j < col_len)
-		{
-			if (lines[i + 1][j] == map_info->empty)
-				ret_val[i][j] = 0;
-			else
-				ret_val[i][j] = 1;
-			j++;
-		}
-		ret_val[i][j] = -1;
 		i++;
 	}
 	ret_val[i] = NULL;
 	return (ret_val);
 }
 
-void	display_map(t_map_info *map_info, char **map)
-{
-	int	i;
-
-	i = 0;
-	while (i < map_info->rows)
-	{
-		ft_putstr(map[i]);
-		ft_putstr("\n");
-		i++;
-	}
-}
-
-void	display_map_n(t_map_info *map_info, int **map)
+void	init_map_n(char **lines, int **map_n, t_map_info *map_info)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	while (i < map_info->rows)
+	while (lines[i + 1] != NULL)
 	{
 		j = 0;
-		while (map[i][j] != -1)
+		while (lines[i + 1][j] != '\0')
 		{
-			ft_putnbr(map[i][j]);
+			if (lines[i + 1][j] == map_info->empty)
+				map_n[i][j] = 0;
+			else
+				map_n[i][j] = 1;
 			j++;
 		}
-		ft_putstr("\n");
+		map_n[i][j] = -1;
 		i++;
 	}
 }

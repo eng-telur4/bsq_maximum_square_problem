@@ -6,57 +6,45 @@
 /*   By: eng-telur4 <eng-telur4@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 16:47:35 by eng-telur4        #+#    #+#             */
-/*   Updated: 2024/09/25 02:33:23 by eng-telur4       ###   ########.fr       */
+/*   Updated: 2024/09/25 03:13:15 by eng-telur4       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "declaration.h"
 
-void	main_process(char *file_name)
+char	**check_file_format(char *file_name)
 {
-	t_map_info	*map_info;
 	char		*buf;
 	char		**lines;
-	char		**map;
-	char		**answer;
-	int			**map_n;
-	int			**fill;
-	int			max_width;
-	t_bool		flag;
-	int			i;
-	int			j;
-	int			x;
-	int			y;
+	t_map_info	*map_info;
 
 	buf = read_file(file_name);
 	if (buf == NULL)
-		return ;
+		return (NULL);
 	lines = read_lines(buf);
 	if (lines == NULL)
 	{
 		free(buf);
-		return ;
+		return (NULL);
 	}
 	if (!check_format(lines))
 	{
 		free(buf);
-		free_2d_array((void **)lines, ft_strs_count(buf, "\n"));
+		free_2d_array((void **)lines, get_line_countl(lines));
 		ft_putstr("map error\n");
-		return ;
+		return (NULL);
 	}
-	map_info = create_map_info(lines[0]);
-	if (map_info == NULL)
-	{
-		free(buf);
-		free_2d_array((void **)lines, ft_strs_count(buf, "\n"));
-		return ;
-	}
-	map = create_map(lines, map_info->rows);
-	answer = create_map(lines, map_info->rows);
-	map_n = create_map_n(lines, map_info);
-	fill = create_map_n(lines, map_info);
-	max_width = get_largest_square(map_info->rows, ft_strlen(lines[1]), map_n,
-			fill);
+	free(buf);
+	return (lines);
+}
+
+void	find_max_width(int max_width, t_map_info *map_info, int **fill,
+		t_point_2d *point)
+{
+	t_bool	flag;
+	int		i;
+	int		j;
+
 	flag = FALSE;
 	i = 0;
 	while (i < map_info->rows)
@@ -75,17 +63,54 @@ void	main_process(char *file_name)
 			break ;
 		i++;
 	}
-	x = i;
-	while (x >= i - max_width + 1)
+	point->x = i;
+	point->y = j;
+}
+
+void	reflect_answer(int **fill, char **answer, t_map_info *map_info,
+		int max_width)
+{
+	t_point_2d	point;
+	int			i;
+	int			j;
+
+	find_max_width(max_width, map_info, fill, &point);
+	i = point.x;
+	while (i >= point.x - max_width + 1)
 	{
-		y = j;
-		while (y >= j - max_width + 1)
+		j = point.y;
+		while (j >= point.y - max_width + 1)
 		{
-			answer[x][y] = map_info->full;
-			y--;
+			answer[i][j] = map_info->full;
+			j--;
 		}
-		x--;
+		i--;
 	}
+}
+
+void	main_process(char **lines)
+{
+	t_map_info	*map_info;
+	char		**answer;
+	int			**map_n;
+	int			**fill;
+	int			max_width;
+
+	map_info = create_map_info(lines[0]);
+	if (map_info == NULL)
+	{
+		free_2d_array((void **)lines, get_line_countl(lines));
+		return ;
+	}
+	answer = create_map(lines, map_info->rows);
+	init_map(lines, answer);
+	map_n = create_map_n(lines, map_info);
+	init_map_n(lines, map_n, map_info);
+	fill = create_map_n(lines, map_info);
+	init_map_n(lines, fill, map_info);
+	max_width = ft_calc_max_square(map_info->rows, ft_strlen(lines[1]), map_n,
+			fill);
+	reflect_answer(fill, answer, map_info, max_width);
 	display_map(map_info, answer);
 }
 
@@ -99,7 +124,9 @@ int	main(int argc, char **argv)
 		i = 1;
 		while (i < argc)
 		{
-			main_process(argv[i]);
+			lines = check_file_format(argv[i]);
+			if (lines != NULL)
+				main_process(lines);
 			i++;
 		}
 	}
