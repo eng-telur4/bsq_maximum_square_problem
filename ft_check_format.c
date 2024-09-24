@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_format.c                                     :+:      :+:    :+:   */
+/*   ft_check_format.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eng-telur4 <eng-telur4@student.42.fr>      +#+  +:+       +#+        */
+/*   By: skamijo <skamijo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 23:04:56 by skamijo           #+#    #+#             */
-/*   Updated: 2024/09/25 02:32:03 by eng-telur4       ###   ########.fr       */
+/*   Updated: 2024/09/25 03:17:41 by skamijo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ t_bool	is_same_column(char **lines)
 }
 
 // フォーマットをチェックする
-t_bool	check_format(char **lines)
+t_bool	ft_check_format(char **lines)
 {
 	t_map_info	*map_info;
 

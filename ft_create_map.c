@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_create_map.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eng-telur4 <eng-telur4@student.42.fr>      +#+  +:+       +#+        */
+/*   By: skamijo <skamijo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 23:08:54 by skamijo           #+#    #+#             */
-/*   Updated: 2024/09/25 02:44:05 by eng-telur4       ###   ########.fr       */
+/*   Updated: 2024/09/25 03:21:44 by skamijo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,6 @@ int	**create_map_n(char **lines, t_map_info *map_info)
 	int	i;
 	int	**ret_val;
 	int	col_len;
-	int	j;
 
 	i = 0;
 	ret_val = (int **)malloc((map_info->rows + 1) * sizeof(int *));

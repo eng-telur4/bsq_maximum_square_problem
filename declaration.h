@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   declaration.h                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eng-telur4 <eng-telur4@student.42.fr>      +#+  +:+       +#+        */
+/*   By: skamijo <skamijo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 16:41:48 by skamijo           #+#    #+#             */
-/*   Updated: 2024/09/25 03:05:37 by eng-telur4       ###   ########.fr       */
+/*   Updated: 2024/09/25 03:23:18 by skamijo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,8 @@ char		*ft_substr(char *str, int start, int len);
 void		free_2d_array(void **array, int h);
 void		free_2d_array_en_route(void **arr, int i);
 
-// check_format.c
-t_bool		check_format(char **lines);
+// ft_check_format.c
+t_bool		ft_check_format(char **lines);
 // t_bool		is_info_def(char *line);
 // t_bool		is_match_linenum(char **lines, t_map_info *val);
 // t_bool		is_match_charset(char **lines, t_map_info *val);

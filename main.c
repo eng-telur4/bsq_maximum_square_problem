@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eng-telur4 <eng-telur4@student.42.fr>      +#+  +:+       +#+        */
+/*   By: skamijo <skamijo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 16:47:35 by eng-telur4        #+#    #+#             */
-/*   Updated: 2024/09/25 03:13:15 by eng-telur4       ###   ########.fr       */
+/*   Updated: 2024/09/25 03:21:27 by skamijo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ char	**check_file_format(char *file_name)
 {
 	char		*buf;
 	char		**lines;
-	t_map_info	*map_info;
 
 	buf = read_file(file_name);
 	if (buf == NULL)
@@ -27,7 +26,7 @@ char	**check_file_format(char *file_name)
 		free(buf);
 		return (NULL);
 	}
-	if (!check_format(lines))
+	if (!ft_check_format(lines))
 	{
 		free(buf);
 		free_2d_array((void **)lines, get_line_countl(lines));
