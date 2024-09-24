@@ -6,7 +6,7 @@
 /*   By: skamijo <skamijo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 16:41:48 by skamijo           #+#    #+#             */
-/*   Updated: 2024/09/25 04:00:59 by skamijo          ###   ########.fr       */
+/*   Updated: 2024/09/25 04:22:46 by skamijo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,9 @@ typedef struct s_point_2d
 	int		x;
 	int		y;
 }			t_point_2d;
+
+// ft_read_stdin.c
+char	*read_stdin(void);
 
 // ft_file_io.c
 char		*read_file(char *file_name);

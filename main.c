@@ -6,7 +6,7 @@
 /*   By: skamijo <skamijo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 16:47:35 by eng-telur4        #+#    #+#             */
-/*   Updated: 2024/09/25 04:02:38 by skamijo          ###   ########.fr       */
+/*   Updated: 2024/09/25 04:24:01 by skamijo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,6 +147,15 @@ int	main(int argc, char **argv)
 	int		i;
 	char	**lines;
 
+	if (argc == 1)
+	{
+		while (1)
+		{
+			lines = check_file_format(read_stdin());
+			if (lines != NULL)
+				main_process(lines);
+		}
+	}
 	if (argc >= 2)
 	{
 		i = 1;
@@ -159,5 +168,3 @@ int	main(int argc, char **argv)
 		}
 	}
 }
-
-// https://itsfoss.com/install-woeusb-ubuntu/
