@@ -6,7 +6,7 @@
 /*   By: skamijo <skamijo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 16:41:48 by skamijo           #+#    #+#             */
-/*   Updated: 2024/09/25 04:22:46 by skamijo          ###   ########.fr       */
+/*   Updated: 2024/09/25 04:44:16 by skamijo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ typedef struct s_point_2d
 }			t_point_2d;
 
 // ft_read_stdin.c
-char	*read_stdin(void);
+char		*read_stdin(void);
 
 // ft_file_io.c
 char		*read_file(char *file_name);
@@ -70,10 +70,15 @@ void		free_2d_array_en_route(void **arr, int i);
 
 // ft_check_format.c
 t_bool		ft_check_format(char **lines);
-// t_bool		is_info_def(char *line);
-// t_bool		is_match_linenum(char **lines, t_map_info *val);
-// t_bool		is_match_charset(char **lines, t_map_info *val);
+// t_bool		is_match_linenum(char **lines, t_map_info *map_info);
+// t_bool		is_match_charset(char **lines, t_map_info *map_info);
 // t_bool		is_same_column(char **lines);
+// t_bool		is_exist_one_obstacle_line(char **lines, t_map_info *map_info);
+
+// ft_is_info_def.c
+t_bool		is_not_same_char(char c1, char c2, char c3);
+t_bool		is_natural_num(int num);
+t_bool		is_info_def(char *line);
 
 // ft_strlen.c
 int			ft_strlen(char *s);

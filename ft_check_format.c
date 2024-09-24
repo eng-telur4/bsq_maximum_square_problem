@@ -6,35 +6,11 @@
 /*   By: skamijo <skamijo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 23:04:56 by skamijo           #+#    #+#             */
-/*   Updated: 2024/09/25 04:04:00 by skamijo          ###   ########.fr       */
+/*   Updated: 2024/09/25 04:45:03 by skamijo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "declaration.h"
-
-/**
- * @fn
- * 図の情報を表す構造になっているかどうか確認する
- * @param line 図の情報を表すとみられる文字列(ファイルの一行目)
- * @return 図の情報を表す構造になってたらTRUE、そうでなかったらFALSEを返す
- */
-t_bool	is_info_def(char *line)
-{
-	int		len;
-	char	*s1;
-	char	*s2;
-
-	len = ft_strlen(line);
-	s1 = ft_substr(line, 0, len - 3);
-	s2 = ft_substr(line, len - 3, len);
-	if (ft_atoi(s1) <= 0)
-		return (FALSE);
-	if (ft_strlen(s2) != 3)
-		return (FALSE);
-	if (!ft_str_is_printable(s2))
-		return (FALSE);
-	return (TRUE);
-}
 
 /**
  * @fn
@@ -105,6 +81,37 @@ t_bool	is_same_column(char **lines)
 
 /**
  * @fn
+ * 障害物が1つの行が少なくとも1つ存在するかテストする
+ * @param lines ファイルを行ごとに区切った文字列配列
+ * @param map_info 図の情報を格納したt_map_info型構造体
+ * @return 1つでも存在すればTRUE、そうでないならFALSEを返す
+ */
+t_bool	is_exist_one_obstacle_line(char **lines, t_map_info *map_info)
+{
+	int	count;
+	int	i;
+	int	j;
+
+	i = 0;
+	while (lines[i + 1] != NULL)
+	{
+		count = 0;
+		j = 0;
+		while (lines[i + 1][j] != '\0')
+		{
+			if (lines[i + 1][j] == map_info->obstacle)
+				count++;
+			j++;
+		}
+		if (count == 1)
+			return (TRUE);
+		i++;
+	}
+	return (FALSE);
+}
+
+/**
+ * @fn
  * ファイルのフォーマットをチェックする
  * @param lines ファイルを行ごとに区切った文字列配列
  * @return フォーマットがあってたらTRUE、そうでなかったらFALSEを返す
@@ -121,6 +128,8 @@ t_bool	ft_check_format(char **lines)
 	if (!is_same_column(lines))
 		return (FALSE);
 	if (!is_match_charset(lines, map_info))
+		return (FALSE);
+	if (!is_exist_one_obstacle_line(lines, map_info))
 		return (FALSE);
 	return (TRUE);
 }
