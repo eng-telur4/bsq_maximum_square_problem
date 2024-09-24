@@ -6,7 +6,7 @@
 /*   By: skamijo <skamijo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 16:41:48 by skamijo           #+#    #+#             */
-/*   Updated: 2024/09/25 03:23:18 by skamijo          ###   ########.fr       */
+/*   Updated: 2024/09/25 04:00:59 by skamijo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <unistd.h>
 // # define DEBUG
 
-// 図の情報型
+// 2次元情報を表すt_point_2d型構造体
 typedef struct s_map_info
 {
 	int		rows;
@@ -98,6 +98,7 @@ char		*ft_strcpy(char *dest, char *src);
 
 // ft_calc_max_square.c
 int			ft_calc_max_square(int h, int w, int **g_g, int **g_dp);
+// int	calc_one(int h, int w, int **g_g, int **g_dp);
 
 // ft_min_max.c
 int			min(int a, int b);

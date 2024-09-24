@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_file_io.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eng-telur4 <eng-telur4@student.42.fr>      +#+  +:+       +#+        */
+/*   By: skamijo <skamijo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 16:42:05 by skamijo           #+#    #+#             */
-/*   Updated: 2024/09/25 02:54:23 by eng-telur4       ###   ########.fr       */
+/*   Updated: 2024/09/25 03:28:27 by skamijo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,23 +97,3 @@ int	get_line_countl(char **lines)
 		count++;
 	return (count);
 }
-
-// int	main(int argc, char **argv)
-// {
-// 	char	*buf;
-// 	char	**lines;
-// 	int		i;
-
-// 	if (argc >= 2)
-// 	{
-// 		buf = read_file(argv[1]);
-// 		lines = read_lines(buf);
-// 		// printf("%s", read_file(argv[1]));
-// 		i = 0;
-// 		while (i < get_line_count(buf))
-// 		{
-// 			printf("%s\n", lines[i]);
-// 			i++;
-// 		}
-// 	}
-// }

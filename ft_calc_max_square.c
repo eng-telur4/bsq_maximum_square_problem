@@ -3,15 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calc_max_square.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: eng-telur4 <eng-telur4@student.42.fr>      +#+  +:+       +#+        */
+/*   By: skamijo <skamijo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 23:22:50 by skamijo           #+#    #+#             */
-/*   Updated: 2024/09/25 02:46:57 by eng-telur4       ###   ########.fr       */
+/*   Updated: 2024/09/25 03:49:39 by skamijo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "declaration.h"
 
+/**
+ * @fn
+ * 動的計画法を用いて最大正方形問題を解く(ft_calc_max_squareで使用する)
+ * @param h 図の高さ
+ * @param w 図の幅
+ * @param g_g 操作する図
+ * @param g_dp 回答を入れるための図
+ * @return
+ */
 int	calc_one(int h, int w, int **g_g, int **g_dp)
 {
 	int	max_width;
@@ -34,6 +43,15 @@ int	calc_one(int h, int w, int **g_g, int **g_dp)
 	return (max_width);
 }
 
+/**
+ * @fn
+ * 動的計画法を用いて最大正方形問題を解く
+ * @param h 図の高さ
+ * @param w 図の幅
+ * @param g_g 操作する図
+ * @param g_dp 回答を入れるための図
+ * @return 入れることができる正方形の一片の長さ
+ */
 int	ft_calc_max_square(int h, int w, int **g_g, int **g_dp)
 {
 	int	max_width;

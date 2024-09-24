@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skamijo <skamijo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: skamijo <skamijo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/05 18:55:26 by skamijo           #+#    #+#             */
-/*   Updated: 2024/09/22 22:29:36 by skamijo          ###   ########.fr       */
+/*   Updated: 2024/09/25 03:32:41 by skamijo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@
  * @return 受け側の文字列destへのポインタを返す。
  * @sa https://ja.manpages.org/strcpy/3
  */
-
 char	*ft_strcpy(char *dest, char *src)
 {
 	char	*tmp;

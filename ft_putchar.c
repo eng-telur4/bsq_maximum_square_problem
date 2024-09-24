@@ -6,12 +6,17 @@
 /*   By: skamijo <skamijo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/04 13:00:11 by skamijo           #+#    #+#             */
-/*   Updated: 2024/09/24 21:28:20 by skamijo          ###   ########.fr       */
+/*   Updated: 2024/09/25 03:26:48 by skamijo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "declaration.h"
 
+/**
+ * @fn
+ * 文字cを標準出力に表示する
+ * @param c 対象の文字
+ */
 void	ft_putchar(char c)
 {
 	write(1, &c, 1);

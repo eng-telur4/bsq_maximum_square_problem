@@ -6,13 +6,18 @@
 /*   By: skamijo <skamijo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 23:04:56 by skamijo           #+#    #+#             */
-/*   Updated: 2024/09/25 03:17:41 by skamijo          ###   ########.fr       */
+/*   Updated: 2024/09/25 03:47:02 by skamijo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "declaration.h"
 
-// (1行目が)図の情報を表しているかどうか
+/**
+ * @fn
+ * 図の情報を表す構造になっているかどうか確認する
+ * @param line 図の情報を表すとみられる文字列(ファイルの一行目)
+ * @return 図の情報を表す構造になってたらTRUE、そうでなかったらFALSEを返す
+ */
 t_bool	is_info_def(char *line)
 {
 	int		len;
@@ -31,21 +36,33 @@ t_bool	is_info_def(char *line)
 	return (TRUE);
 }
 
-// 行数が指定と同じかどうか
-t_bool	is_match_linenum(char **lines, t_map_info *val)
+/**
+ * @fn
+ * ファイルに入ってる図の列数が指定と同じか確認する
+ * @param lines ファイルを行ごとに区切った文字列配列
+ * @param map_info 図の情報を格納したt_map_info型構造体
+ * @return 列数がすべて指定通りだったらTRUE、そうでなかったらFALSEを返す
+ */
+t_bool	is_match_linenum(char **lines, t_map_info *map_info)
 {
 	int	i;
 
 	i = 0;
 	while (lines[i + 1] != NULL)
 		i++;
-	if (i != val->rows)
+	if (i != map_info->rows)
 		return (FALSE);
 	return (TRUE);
 }
 
-// 文字が指定と同じかどうか
-t_bool	is_match_charset(char **lines, t_map_info *val)
+/**
+ * @fn
+ * ファイルに入ってる図の文字が指定と同じか確認する
+ * @param lines ファイルを行ごとに区切った文字列配列
+ * @param map_info 図の情報を格納したt_map_info型構造体
+ * @return 文字がすべて指定通りだったらTRUE、そうでなかったらFALSEを返す
+ */
+t_bool	is_match_charset(char **lines, t_map_info *map_info)
 {
 	int	i;
 	int	j;
@@ -56,7 +73,7 @@ t_bool	is_match_charset(char **lines, t_map_info *val)
 		j = 0;
 		while (lines[i][j] != '\0')
 		{
-			if (lines[i][j] != val->empty && lines[i][j] != val->obstacle)
+			if (lines[i][j] != map_info->empty && lines[i][j] != map_info->obstacle)
 				return (FALSE);
 			j++;
 		}
@@ -65,7 +82,12 @@ t_bool	is_match_charset(char **lines, t_map_info *val)
 	return (TRUE);
 }
 
-// 列数がすべて同じかどうか
+/**
+ * @fn
+ * ファイルに入ってる図の列数がすべて同じか確認する
+ * @param lines ファイルを行ごとに区切った文字列配列
+ * @return 列数がすべて同じだったらTRUE、そうでなかったらFALSEを返す
+ */
 t_bool	is_same_column(char **lines)
 {
 	int	i;
@@ -80,7 +102,12 @@ t_bool	is_same_column(char **lines)
 	return (TRUE);
 }
 
-// フォーマットをチェックする
+/**
+ * @fn
+ * ファイルのフォーマットをチェックする
+ * @param lines ファイルを行ごとに区切った文字列配列
+ * @return フォーマットがあってたらTRUE、そうでなかったらFALSEを返す
+ */
 t_bool	ft_check_format(char **lines)
 {
 	t_map_info	*map_info;

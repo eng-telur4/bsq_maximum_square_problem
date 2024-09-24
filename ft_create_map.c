@@ -6,13 +6,19 @@
 /*   By: skamijo <skamijo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 23:08:54 by skamijo           #+#    #+#             */
-/*   Updated: 2024/09/25 03:21:44 by skamijo          ###   ########.fr       */
+/*   Updated: 2024/09/25 04:02:10 by skamijo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "declaration.h"
 
-// 図の情報を構造体に格納
+/**
+ * @fn
+ * 図の情報をt_map_info型構造体に格納する
+ * @param line 図の情報が入ってる文字列(1行目)
+ * @return 作成したt_map_info型構造体のポインタ
+ * @attention メモリ確保(malloc)できなかった場合はNULLが返る
+ */
 t_map_info	*create_map_info(char *line)
 {
 	t_map_info	*ret_val;
@@ -33,6 +39,14 @@ t_map_info	*create_map_info(char *line)
 	return (ret_val);
 }
 
+/**
+ * @fn
+ * (文字ベースの)図を入れる領域を確保する
+ * @param lines 図が入ってる文字列配列
+ * @param row_len 図の行数
+ * @return 作成した図が入っている二次元配列のポインタ
+ * @attention メモリ確保(malloc)できなかった場合はNULLが返る
+ */
 char	**create_map(char **lines, int row_len)
 {
 	int		i;
@@ -58,6 +72,12 @@ char	**create_map(char **lines, int row_len)
 	return (ret_val);
 }
 
+/**
+ * @fn
+ * (文字ベースの)図をコピーする
+ * @param lines 図が入ってる文字列配列
+ * @param map 図が入っている二次元配列のポインタ
+ */
 void	init_map(char **lines, char **map)
 {
 	int	i;
@@ -70,6 +90,14 @@ void	init_map(char **lines, char **map)
 	}
 }
 
+/**
+ * @fn
+ * (数字ベースの)図を入れる領域を確保する
+ * @param lines 図が入ってる文字列配列
+ * @param map_info 図の情報を格納したt_map_info型構造体
+ * @return 作成した図が入っている二次元配列のポインタ
+ * @attention メモリ確保(malloc)できなかった場合はNULLが返る
+ */
 int	**create_map_n(char **lines, t_map_info *map_info)
 {
 	int	i;
@@ -95,6 +123,13 @@ int	**create_map_n(char **lines, t_map_info *map_info)
 	return (ret_val);
 }
 
+/**
+ * @fn
+ * (数字ベースの)図をコピーする
+ * @param lines 図が入ってる文字列配列
+ * @param map_n 図が入っている二次元配列のポインタ
+ * @param map_info 図の情報を格納したt_map_info型構造体
+ */
 void	init_map_n(char **lines, int **map_n, t_map_info *map_info)
 {
 	int	i;
