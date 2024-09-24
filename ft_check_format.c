@@ -6,7 +6,7 @@
 /*   By: skamijo <skamijo@student.42tokyo.jp>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/24 23:04:56 by skamijo           #+#    #+#             */
-/*   Updated: 2024/09/25 03:47:02 by skamijo          ###   ########.fr       */
+/*   Updated: 2024/09/25 04:04:00 by skamijo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,8 @@ t_bool	is_match_charset(char **lines, t_map_info *map_info)
 		j = 0;
 		while (lines[i][j] != '\0')
 		{
-			if (lines[i][j] != map_info->empty && lines[i][j] != map_info->obstacle)
+			if (lines[i][j] != map_info->empty
+				&& lines[i][j] != map_info->obstacle)
 				return (FALSE);
 			j++;
 		}
