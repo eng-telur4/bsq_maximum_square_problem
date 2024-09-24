@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skamijo <skamijo@student.42tokyo.jp>       +#+  +:+       +#+        */
+/*   By: eng-telur4 <eng-telur4@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/08 20:12:12 by skamijo           #+#    #+#             */
-/*   Updated: 2024/09/25 00:58:49 by skamijo          ###   ########.fr       */
+/*   Updated: 2024/09/25 02:18:48 by eng-telur4       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,5 @@ int	ft_atoi(char *str)
 		else
 			break ;
 	}
-	printf("%d\n", ret * sign);
 	return (ret * sign);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: skamijo <skamijo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: eng-telur4 <eng-telur4@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/17 13:36:53 by totake            #+#    #+#             */
-/*   Updated: 2024/09/22 22:29:12 by skamijo          ###   ########.fr       */
+/*   Updated: 2024/09/25 02:07:58 by eng-telur4       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ char	**ft_split(char *str, char *charset)
 				- start);
 		if (ret[i] == NULL)
 		{
-			free_2d((void **)ret, i);
+			free_2d_array_en_route((void **)ret, i);
 			return (NULL);
 		}
 	}
